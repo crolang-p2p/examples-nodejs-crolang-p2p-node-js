@@ -1,0 +1,38 @@
+{
+  "name": "examples-nodejs-crolang-p2p-node-js",
+  "description": "Examples demonstrating how to use the CrolangP2P library in a Node.js (TypeScript) environment",
+  "scripts": {
+    "ex1Alice": "ts-node src/ex_1/Ex_1_Alice.ts",
+    "ex1Bob": "ts-node src/ex_1/Ex_1_Bob.ts"
+  },
+  "keywords": [
+    "crolang",
+    "p2p",
+    "webrtc",
+    "nodejs",
+    "typescript",
+    "peer-to-peer",
+    "networking"
+  ],
+  "author": "Alessandro Talmi <alessandro.talmi@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "crolang-p2p-node": "^0.4.0-alpha"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js/issues"
+  },
+  "homepage": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js#readme"
+}
