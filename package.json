@@ -3,7 +3,9 @@
   "description": "Examples demonstrating how to use the CrolangP2P library in a Node.js (TypeScript) environment",
   "scripts": {
     "ex1Alice": "ts-node src/ex_1/Ex_1_Alice.ts",
-    "ex1Bob": "ts-node src/ex_1/Ex_1_Bob.ts"
+    "ex1Bob": "ts-node src/ex_1/Ex_1_Bob.ts",
+    "ex3Alice": "ts-node src/ex_3/Ex_3_Alice.ts",
+    "ex3Bob": "ts-node src/ex_3/Ex_3_Bob.ts"
   },
   "keywords": [
     "crolang",
