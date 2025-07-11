@@ -65,7 +65,7 @@ Received a message on GREETINGS_CHANNEL from Node Bob: Hi Alice, I'm Node Bob
 In the project root, run:
 
 ```sh
-npm run ex1Alice
+npm run ex1Bob
 ```
 
 ### 2: Start Node Alice
@@ -73,5 +73,5 @@ npm run ex1Alice
 In a separate terminal, run:
 
 ```sh
-npm run ex1Bob
+npm run ex1Alice
 ```
