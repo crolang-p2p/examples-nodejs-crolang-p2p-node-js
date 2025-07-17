@@ -5,7 +5,14 @@
     "ex1Alice": "ts-node src/ex_1/Ex_1_Alice.ts",
     "ex1Bob": "ts-node src/ex_1/Ex_1_Bob.ts",
     "ex3Alice": "ts-node src/ex_3/Ex_3_Alice.ts",
-    "ex3Bob": "ts-node src/ex_3/Ex_3_Bob.ts"
+    "ex3Bob": "ts-node src/ex_3/Ex_3_Bob.ts",
+    "ex5Alice": "ts-node src/ex_5/Ex_5_Alice.ts",
+    "ex5Bob": "ts-node src/ex_5/Ex_5_Bob.ts",
+    "ex6Alice": "ts-node src/ex_6/Ex_6_Alice.ts",
+    "ex6Bob": "ts-node src/ex_6/Ex_6_Bob.ts",
+    "ex6Carol": "ts-node src/ex_6/Ex_6_Carol.ts",
+    "ex8Alice": "ts-node src/ex_8/Ex_8_Alice.ts",
+    "ex8Bob": "ts-node src/ex_8/Ex_8_Bob.ts"
   },
   "keywords": [
     "crolang",
