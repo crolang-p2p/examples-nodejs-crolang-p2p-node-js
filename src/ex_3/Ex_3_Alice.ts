@@ -22,7 +22,7 @@ CrolangP2PJs.connectToBroker(
             node.send("CHANNEL_DISCONNECT", ``);
         })
         .setOnDisconnection(id => {
-            console.log("Disconnected from Node " + id + " , trying to reconnect...")
+            console.log("Disconnected from Node " + id + ", trying to reconnect...")
             CrolangP2PJs.connectToSingleNode(BOB_ID, CrolangNodeCallbacksJsBuilder.create()
                 .setOnConnectionFailed((id, reason) => {
                     console.log("Error connecting to Node " + id + ": " + reason);

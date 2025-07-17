@@ -35,9 +35,12 @@ CrolangP2PJs.connectToBroker(
             console.log("Received on CHANNEL_NUMBERS from " + node.id + ": " + msg);
         })
         .addOnNewMsgCallback("CHANNEL_DISCONNECT", (node: CrolangNodeJs, msg: string) => {
-            console.log("Received CHANNEL_DISCONNECT from " + node.id + ". Disconnecting...")
+            console.log("Received a message on CHANNEL_DISCONNECT from Node " + node.id);
+            CrolangP2PJs.stopIncomingConnections();
+            console.log("Are incoming connections allowed: " + CrolangP2PJs.areIncomingConnectionsAllowed());
+            console.log("Disconnecting from " + node.id);
             node.disconnect()
-        })
+        });
 
     CrolangP2PJs.allowIncomingConnections(incomingCrolangNodesCallbacks);
 
