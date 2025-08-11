@@ -25,9 +25,6 @@
   ],
   "author": "Alessandro Talmi <alessandro.talmi@gmail.com>",
   "license": "Apache-2.0",
-  "dependencies": {
-    "crolang-p2p-node": "^0.4.1-alpha"
-  },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "ts-node": "^10.9.1",
@@ -43,5 +40,8 @@
   "bugs": {
     "url": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js/issues"
   },
-  "homepage": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js#readme"
+  "homepage": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js#readme",
+  "dependencies": {
+    "crolang-p2p-node": "^0.5.2-alpha"
+  }
 }
