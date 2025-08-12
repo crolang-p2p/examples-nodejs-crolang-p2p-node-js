@@ -4,15 +4,29 @@
   "scripts": {
     "ex1Alice": "ts-node src/ex_1/Ex_1_Alice.ts",
     "ex1Bob": "ts-node src/ex_1/Ex_1_Bob.ts",
+    "ex2Alice": "ts-node src/ex_2/Ex_2_Alice.ts",
     "ex3Alice": "ts-node src/ex_3/Ex_3_Alice.ts",
     "ex3Bob": "ts-node src/ex_3/Ex_3_Bob.ts",
+    "ex4AliceA": "ts-node src/ex_4/Ex_4_A_Alice.ts",
+    "ex4AliceB": "ts-node src/ex_4/Ex_4_B_Alice.ts",
+    "ex4Bob": "ts-node src/ex_4/Ex_4_Bob.ts",
+    "ex4Carol": "ts-node src/ex_4/Ex_4_Carol.ts",
     "ex5Alice": "ts-node src/ex_5/Ex_5_Alice.ts",
     "ex5Bob": "ts-node src/ex_5/Ex_5_Bob.ts",
     "ex6Alice": "ts-node src/ex_6/Ex_6_Alice.ts",
     "ex6Bob": "ts-node src/ex_6/Ex_6_Bob.ts",
     "ex6Carol": "ts-node src/ex_6/Ex_6_Carol.ts",
+    "ex7Alice": "ts-node src/ex_7/Ex_7_Alice.ts",
+    "ex7Bob": "ts-node src/ex_7/Ex_7_Bob.ts",
     "ex8Alice": "ts-node src/ex_8/Ex_8_Alice.ts",
-    "ex8Bob": "ts-node src/ex_8/Ex_8_Bob.ts"
+    "ex8Bob": "ts-node src/ex_8/Ex_8_Bob.ts",
+    "ex9Alice": "ts-node src/ex_9/Ex_9_Alice.ts",
+    "ex9Bob": "ts-node src/ex_9/Ex_9_Bob.ts",
+    "ex9Carol": "ts-node src/ex_9/Ex_9_Carol.ts",
+    "ex10Alice": "ts-node src/ex_10/Ex_10_Alice.ts",
+    "ex10Bob": "ts-node src/ex_10/Ex_10_Bob.ts",
+    "ex11Alice": "ts-node src/ex_11/Ex_11_Alice.ts",
+    "ex12Alice": "ts-node src/ex_12/Ex_12_Alice.ts"
   },
   "keywords": [
     "crolang",
@@ -42,6 +56,6 @@
   },
   "homepage": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js#readme",
   "dependencies": {
-    "crolang-p2p-node": "^0.5.2-alpha"
+    "crolang-p2p-node": "^0.5.5-alpha"
   }
 }
