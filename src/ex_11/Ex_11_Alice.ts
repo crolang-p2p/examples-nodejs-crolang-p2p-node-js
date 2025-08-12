@@ -29,7 +29,7 @@ CrolangP2PJs.connectToBroker(
             })
         )
         .setSettings(CrolangSettingsJsBuilder.create()
-            .setP2pConnectionTimeoutMillis(5000) //DEFAULT: 30000
+            .setP2PConnectionTimeoutMillis(5000) //DEFAULT: 30000
             .setMultipartP2PMessageTimeoutMillis(1000) //DEFAULT: 60000
             .setReconnection(true) //DEFAULT: true
             .setMaxReconnectionAttempts(5) //DEFAULT: null (unlimited)
