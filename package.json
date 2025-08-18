@@ -56,6 +56,6 @@
   },
   "homepage": "https://github.com/crolang-p2p/examples-nodejs-crolang-p2p-node-js#readme",
   "dependencies": {
-    "crolang-p2p-node": "^0.5.5-alpha"
+    "crolang-p2p-node": "^0.6.0-alpha"
   }
 }

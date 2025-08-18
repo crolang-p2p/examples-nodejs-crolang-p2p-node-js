@@ -24,7 +24,7 @@ CrolangP2PJs.connectToBroker(
                 .then(bob => {
                     if (bob !== null) {
                         console.log(`Node ${BOB_ID} is connected`);
-                        bob.send("GREETINGS_CHANNEL", "Hello " + bob.id + "!");
+                        bob.sendString("GREETINGS_CHANNEL", "Hello " + bob.id + "!");
                     }
                 });
             CrolangP2PJs.getAllConnectedNodes()
@@ -32,7 +32,7 @@ CrolangP2PJs.connectToBroker(
                     const carol = nodes.find(node => node.id === CAROL_ID);
                     if (carol !== undefined) {
                         console.log(`Node ${CAROL_ID}` + " is connected");
-                        carol.send("GREETINGS_CHANNEL", "Hello " + carol.id + "!");
+                        carol.sendString("GREETINGS_CHANNEL", "Hello " + carol.id + "!");
                     }
                 });
         }

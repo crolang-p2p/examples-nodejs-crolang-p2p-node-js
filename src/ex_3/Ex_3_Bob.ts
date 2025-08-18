@@ -31,15 +31,20 @@ CrolangP2PJs.connectToBroker(
         .setOnDisconnection(id => {
             console.log("Disconnected from node " + id);
         })
-        .addOnNewMsgCallback("CHANNEL_NUMBERS", (node: CrolangNodeJs, msg: string) => {
+        .addOnNewStringMsgCallback("CHANNEL_NUMBERS", (node: CrolangNodeJs, msg: string) => {
             console.log("Received on CHANNEL_NUMBERS from " + node.id + ": " + msg);
         })
-        .addOnNewMsgCallback("CHANNEL_DISCONNECT", (node: CrolangNodeJs, msg: string) => {
+        .addOnNewStringMsgCallback("CHANNEL_DISCONNECT", (node: CrolangNodeJs, msg: string) => {
             console.log("Received a message on CHANNEL_DISCONNECT from Node " + node.id);
-            CrolangP2PJs.stopIncomingConnections();
-            console.log("Are incoming connections allowed: " + CrolangP2PJs.areIncomingConnectionsAllowed());
-            console.log("Disconnecting from " + node.id);
-            node.disconnect()
+            CrolangP2PJs.stopIncomingConnections()
+                .then(() => {
+                    return CrolangP2PJs.areIncomingConnectionsAllowed();
+                })
+                .then((allowed) => {
+                    console.log("Are incoming connections allowed: " + allowed);
+                    console.log("Disconnecting from " + node.id);
+                    node.disconnect();
+                })
         });
 
     CrolangP2PJs.allowIncomingConnections(incomingCrolangNodesCallbacks);

@@ -19,9 +19,9 @@ CrolangP2PJs.connectToBroker(
         .setOnConnectionSuccess((node: CrolangNodeJs) => {
             console.log(`Connected successfully to Node ${node.id}, platform: ${node.platform}, version: ${node.version}`);
         })
-        .addOnNewMsgCallback("GREETINGS_CHANNEL", (node: CrolangNodeJs, msg: string) => {
+        .addOnNewStringMsgCallback("GREETINGS_CHANNEL", (node: CrolangNodeJs, msg: string) => {
             console.log(`Received a message on GREETINGS_CHANNEL from Node ${node.id}: ${msg}`);
-            node.send("GREETINGS_CHANNEL", `Hi ${node.id}, I'm Node ${BOB_ID}`);
+            node.sendString("GREETINGS_CHANNEL", `Hi ${node.id}, I'm Node ${BOB_ID}`);
         })
     );
 

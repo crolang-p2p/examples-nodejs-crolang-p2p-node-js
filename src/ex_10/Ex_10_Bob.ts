@@ -4,7 +4,8 @@ import {
   IncomingCrolangNodesCallbacksJsBuilder,
   OnNewSocketMsgJsBuilder,
   BrokerConnectionAdditionalParametersJsBuilder,
-  LoggingOptionsJsBuilder,
+  CrolangSettingsJsBuilder,
+  IncomingByteArrayMsgCallbacksJsBuilder,
 } from 'crolang-p2p-node';
 import { BOB_ID, BROKER_ADDR } from '../Constants';
 
@@ -14,7 +15,7 @@ CrolangP2PJs.connectToBroker(
     BROKER_ADDR,
     BOB_ID,
     OnNewSocketMsgJsBuilder.create(),
-    BrokerConnectionAdditionalParametersJsBuilder.create().setLogging(LoggingOptionsJsBuilder.create().setEnableBaseLogging(true).setEnableDebugLogging(true))
+    BrokerConnectionAdditionalParametersJsBuilder.create().setSettings(CrolangSettingsJsBuilder.create().setMultipartP2PMessageTimeoutMillis(600000))
 ).then(() => {
     console.log(`Connected to Broker at ${BROKER_ADDR} as ${BOB_ID}`);
 
@@ -24,14 +25,23 @@ CrolangP2PJs.connectToBroker(
                 startTime = Date.now();
                 console.log(`Connected to Node ${node.id} successfully, waiting for large data transfer...`);
             })
-            .addOnNewMsgCallback('LARGE_DATA_TRANSFER', (node: CrolangNodeJs, msg: string) => {
-                const end = Date.now();
-                const bytes = Buffer.byteLength(msg, 'utf8');
-                const elapsedMs = startTime ? end - startTime : 0;
-                const rate = elapsedMs > 0 ? (bytes / elapsedMs).toFixed(2) : 'N/A';
-                console.log(`Received ${bytes} bytes of data on LARGE_DATA_TRANSFER from Node ${node.id}`);
-                console.log(`Elapsed time since connection ready: ${elapsedMs}ms (${rate} bytes/ms)`);
-            })
+            .addOnNewByteArrayMsgCallback('LARGE_DATA_TRANSFER', IncomingByteArrayMsgCallbacksJsBuilder.create()
+                .setOnNewMsgPartReceived((node: CrolangNodeJs, msgId: number, part: number, total: number) => {
+                    const percentage = ((part + 1) / total * 100).toFixed(2);
+                    console.log(`Received part ${part} of ${total} for message ${msgId} from Node ${node.id} (${percentage}%)`);
+                })
+                .setOnNewCompleteMsgReceived((node: CrolangNodeJs, msgId: number, msg: Int8Array) => {
+                    const end = Date.now();
+                    const bytes = msg.length;
+                    const elapsedMs = startTime ? end - startTime : 0;
+                    const rate = elapsedMs > 0 ? (bytes / elapsedMs).toFixed(2) : 'N/A';
+                    console.log(`Received ${bytes} bytes of data on LARGE_DATA_TRANSFER from Node ${node.id}`);
+                    console.log(`Elapsed time since connection ready: ${elapsedMs}ms (${rate} bytes/ms)`);
+                })
+                .setOnMsgCorruption((node: CrolangNodeJs, msgId: number,) => {
+                    console.log(`Message ${msgId} from Node ${node.id} is corrupted.`);
+                })
+            )
     );
 
 });

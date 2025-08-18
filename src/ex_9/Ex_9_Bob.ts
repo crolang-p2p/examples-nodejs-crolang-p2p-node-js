@@ -20,7 +20,7 @@ CrolangP2PJs.connectToBroker(
         .setOnConnectionSuccess((node: CrolangNodeJs) => {
             console.log(`Connected successfully to Node ${node.id}`);
         })
-        .addOnNewMsgCallback("CONNECT_TO_CAROL", (node: CrolangNodeJs, msg: string) => {
+        .addOnNewStringMsgCallback("CONNECT_TO_CAROL", (node: CrolangNodeJs, msg: string) => {
             console.log(`[CONNECT_TO_CAROL][${node.id}]`);
             console.log(`Connecting to Node ${CAROL_ID}`);
             connectToCarol();
@@ -43,7 +43,7 @@ function connectToCarol() {
                     if (aliceNode) {
                         const newMsg = `${msg}, this message was redirected by Node ${BOB_ID}`;
                         console.log(`Redirecting to Node ${ALICE_ID}: ${newMsg}`);
-                        aliceNode.send("REDIRECT_TO_ALICE", newMsg);
+                        aliceNode.sendString("REDIRECT_TO_ALICE", newMsg);
                     }
                 });
             })

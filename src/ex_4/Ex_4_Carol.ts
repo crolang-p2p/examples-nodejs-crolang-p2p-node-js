@@ -1,4 +1,9 @@
-import { BrokerConnectionAdditionalParametersJsBuilder, CrolangP2PJs, IncomingCrolangNodesCallbacksJsBuilder, OnNewSocketMsgJsBuilder } from "crolang-p2p-node";
+import { 
+    BrokerConnectionAdditionalParametersJsBuilder, 
+    CrolangP2PJs, 
+    IncomingCrolangNodesCallbacksJsBuilder, 
+    OnNewSocketMsgJsBuilder 
+} from "crolang-p2p-node";
 import { BROKER_ADDR, CAROL_ID } from "../Constants";
 
 CrolangP2PJs.connectToBroker(
@@ -12,9 +17,9 @@ CrolangP2PJs.connectToBroker(
     CrolangP2PJs.allowIncomingConnections(IncomingCrolangNodesCallbacksJsBuilder.create()
         .setOnConnectionSuccess((node) => {
             console.log(`Connected to Node ${node.id} successfully`);
-            node.send('CHANNEL_ANIMALS', 'Unicorns');
+            node.sendString('CHANNEL_ANIMALS', 'Unicorns');
         })
-        .addOnNewMsgCallback('GREETINGS_CHANNEL', (node, msg) => {
+        .addOnNewStringMsgCallback('GREETINGS_CHANNEL', (node, msg) => {
             console.log(`Received a message on GREETINGS_CHANNEL from Node ${node.id}: ${msg}`);
         })
     );

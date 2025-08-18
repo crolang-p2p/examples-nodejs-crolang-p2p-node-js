@@ -20,7 +20,7 @@ CrolangP2PJs.connectToBroker(
             console.log(`Connected successfully to Node ${node.id}`);
             const msg = `Hello ${ALICE_ID}, I'm Node ${CAROL_ID}`;
             console.log(`Sending message to Node ${node.id}: ${msg}`);
-            node.send("REDIRECT_TO_ALICE", msg);
+            node.sendString("REDIRECT_TO_ALICE", msg);
         })
     )
 

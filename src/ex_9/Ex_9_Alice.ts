@@ -22,7 +22,7 @@ CrolangP2PJs.connectToBroker(
             })
             .setOnConnectionSuccess((node: CrolangNodeJs) => {
                 console.log(`Connected successfully to Node ${node.id}`);
-                node.send("CONNECT_TO_CAROL", "");
+                node.sendString("CONNECT_TO_CAROL", "");
             })
     );
 

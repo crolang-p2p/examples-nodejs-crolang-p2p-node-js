@@ -17,10 +17,10 @@ CrolangP2PJs.connectToBroker(
     CrolangP2PJs.allowIncomingConnections(IncomingCrolangNodesCallbacksJsBuilder.create()
         .setOnConnectionSuccess((node) => {
             console.log(`Connected to Node ${node.id} successfully`);
-            node.send('CHANNEL_LETTERS', 'ABC');
-            node.send('CHANNEL_NUMBERS', '42');
+            node.sendString('CHANNEL_LETTERS', 'ABC');
+            node.sendString('CHANNEL_NUMBERS', '42');
         })
-        .addOnNewMsgCallback('GREETINGS_CHANNEL', (node, msg) => {
+        .addOnNewStringMsgCallback('GREETINGS_CHANNEL', (node, msg) => {
             console.log(`Received a message on GREETINGS_CHANNEL from Node ${node.id}: ${msg}`);
         })
     );

@@ -4,8 +4,6 @@ import {
   CrolangNodeCallbacksJsBuilder,
   OnNewSocketMsgJsBuilder,
   BrokerConnectionAdditionalParametersJsBuilder,
-  LoggingOptionsJs,
-  LoggingOptionsJsBuilder,
 } from 'crolang-p2p-node';
 import { ALICE_ID, BOB_ID, BROKER_ADDR } from '../Constants';
 import * as fs from 'fs';
@@ -14,19 +12,19 @@ import * as path from 'path';
 const resourcePath = path.resolve(__dirname, 'large_file.txt'); // ~100 MB file in same folder
 
 console.log('Reading large file...');
-let content: string;
+let content: Buffer;
 if (!fs.existsSync(resourcePath)) {
     throw new Error(`File not found: ${resourcePath}`);
 }
-content = fs.readFileSync(resourcePath, 'utf8');
-console.log(`File read successfully. Bytes: ${Buffer.byteLength(content, 'utf8')}`);
+content = fs.readFileSync(resourcePath);
+console.log(`File read successfully. Bytes: ${content.length}`);
 
-let toSend = '';
+console.log(`Repeat the content 10 times to simulate a ~1 GB file`);
+let toSend = Buffer.alloc(0);
 for (let i = 0; i < 10; i++) {
-    // Repeat the content 10 times to simulate a ~1 GB message
-    toSend += content;
+    toSend = Buffer.concat([toSend, content]);
 }
-console.log(`Bytes to send: ${Buffer.byteLength(toSend, 'utf8')}`);
+console.log(`Total bytes to send: ${toSend.length}`);
 
 CrolangP2PJs.connectToBroker(
     BROKER_ADDR,
@@ -41,8 +39,8 @@ CrolangP2PJs.connectToBroker(
         CrolangNodeCallbacksJsBuilder.create().setOnConnectionSuccess((node: CrolangNodeJs) => {
             console.log(`Connected to Node ${node.id} successfully`);
             console.log(`Sending large data to Node ${node.id}...`);
-            const sendResult = node.send('LARGE_DATA_TRANSFER', toSend);
-            console.log(`Data sent result: ${sendResult}`)
+            const sendResult = node.sendBytes('LARGE_DATA_TRANSFER', new Int8Array(toSend));
+            console.log(`Byte array data sent result: ${sendResult}`)
         })
     );
 });

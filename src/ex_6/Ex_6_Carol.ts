@@ -16,7 +16,7 @@ CrolangP2PJs.connectToBroker(
     console.log(`Connected to Broker at ${BROKER_ADDR} as ${CAROL_ID}`);
 
     CrolangP2PJs.allowIncomingConnections(IncomingCrolangNodesCallbacksJsBuilder.create()
-        .addOnNewMsgCallback("GREETINGS_CHANNEL", (node: CrolangNodeJs, msg: string) => {
+        .addOnNewStringMsgCallback("GREETINGS_CHANNEL", (node: CrolangNodeJs, msg: string) => {
             console.log(`Received a message on GREETINGS_CHANNEL from Node ${node.id}: ${msg}`);
         })
     );

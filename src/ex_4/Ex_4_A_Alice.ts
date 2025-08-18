@@ -18,7 +18,7 @@ CrolangP2PJs.connectToBroker(
     const callbacks: CrolangNodeCallbacksJs = CrolangNodeCallbacksJsBuilder.create()
         .setOnConnectionSuccess((node) => {
             console.log(`Connected to Node ${node.id} successfully`);
-            node.send('GREETINGS_CHANNEL', 'Hello there!');
+            node.sendString('GREETINGS_CHANNEL', 'Hello there!');
         })
         .setOnConnectionFailed((id, error) => {
             console.error(`Failed to connect to Node ${id}: ${error}`);

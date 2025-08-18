@@ -1,4 +1,9 @@
-import { BrokerConnectionAdditionalParametersJsBuilder, CrolangP2PJs, IncomingCrolangNodesCallbacksJsBuilder, OnNewSocketMsgJsBuilder } from "crolang-p2p-node";
+import { 
+    BrokerConnectionAdditionalParametersJsBuilder, 
+    CrolangP2PJs, 
+    IncomingCrolangNodesCallbacksJsBuilder, 
+    OnNewSocketMsgJsBuilder
+} from "crolang-p2p-node";
 import { BOB_ID, BROKER_ADDR } from "../Constants";
 
 CrolangP2PJs.connectToBroker(
@@ -21,7 +26,7 @@ CrolangP2PJs.connectToBroker(
                     })
                     .then((isConnected) => {
                         console.log(`Is local Node connected to the Broker: ${isConnected}`);
-                        node.send('COUNT_CHANNEL', '0');
+                        node.sendString('COUNT_CHANNEL', '0');
                     })
                     .catch((error) => {
                         console.error(error);
@@ -30,9 +35,9 @@ CrolangP2PJs.connectToBroker(
             .setOnDisconnection((id) => {
                 console.log(`Disconnected from Node ${id}`);
             })
-            .addOnNewMsgCallback('COUNT_CHANNEL', (node, msg) => {
+            .addOnNewStringMsgCallback('COUNT_CHANNEL', (node, msg) => {
                 console.log(`[COUNT_CHANNEL][${node.id}]: ${msg}`);
-                node.send('COUNT_CHANNEL', (parseInt(msg, 10) + 1).toString());
+                node.sendString('COUNT_CHANNEL', (parseInt(msg, 10) + 1).toString());
             })
     );
 })

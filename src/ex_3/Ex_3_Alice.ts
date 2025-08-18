@@ -18,8 +18,8 @@ CrolangP2PJs.connectToBroker(
     CrolangP2PJs.connectToSingleNode(BOB_ID, CrolangNodeCallbacksJsBuilder.create()
         .setOnConnectionSuccess((node: CrolangNodeJs) => {
             console.log(`Connected to Node ${node.id}`);
-            node.send("CHANNEL_NUMBERS", `42`);
-            node.send("CHANNEL_DISCONNECT", ``);
+            node.sendString("CHANNEL_NUMBERS", `42`);
+            node.sendString("CHANNEL_DISCONNECT", ``);
         })
         .setOnDisconnection(id => {
             console.log("Disconnected from Node " + id + ", trying to reconnect...")

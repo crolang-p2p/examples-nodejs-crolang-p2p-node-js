@@ -11,7 +11,7 @@ import { ALICE_ID, BOB_ID, CAROL_ID, BROKER_ADDR } from '../Constants';
 const bobCallbacks: CrolangNodeCallbacksJs = CrolangNodeCallbacksJsBuilder.create()
     .setOnConnectionSuccess((node) => {
         console.log(`Connected to Node ${node.id} successfully`);
-        node.send('GREETINGS_CHANNEL', 'Hello there!');
+        node.sendString('GREETINGS_CHANNEL', 'Hello there!');
     })
     .setOnConnectionFailed((id, error) => {
         console.error(`Failed to connect to Node ${id}: ${error}`);
@@ -29,7 +29,7 @@ const bobCallbacks: CrolangNodeCallbacksJs = CrolangNodeCallbacksJsBuilder.creat
 const carolCallbacks: CrolangNodeCallbacksJs = CrolangNodeCallbacksJsBuilder.create()
     .setOnConnectionSuccess((node) => {
         console.log(`Connected to Node ${node.id} successfully`);
-        node.send('GREETINGS_CHANNEL', 'Hello there!');
+        node.sendString('GREETINGS_CHANNEL', 'Hello there!');
     })
     .setOnConnectionFailed((id, error) => {
         console.error(`Failed to connect to Node ${id}: ${error}`);

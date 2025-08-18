@@ -31,7 +31,7 @@ CrolangP2PJs.connectToBroker(
                     console.log(`Counter threshold exceeded, disconnecting from Node ${node.id}`);
                     node.disconnect();
                 } else {
-                    node.send('COUNT_CHANNEL', (count + 1).toString());}
+                    node.sendString('COUNT_CHANNEL', (count + 1).toString());}
                 })
             .setOnConnectionSuccess((node: CrolangNodeJs) => {
                 console.log(`Connected successfully to Node ${node.id}`);
